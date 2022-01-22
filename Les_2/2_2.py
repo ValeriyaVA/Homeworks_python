@@ -1,22 +1,22 @@
 # решаю задачу, как если бы не знала положение значений времени и температуры со знаком +/- в строке
-my_list = ['в', '15', 'часов', '3', 'минут', 'температура', 'воздуха', 'была', '-8', 'градусов']
+my_list = ['в', '5', 'часов', '27', 'минут', 'температура', 'воздуха', 'была', '+25', 'градусов']
 
 
 def convert_list_in_str(list_in: list) -> str:
     for i in range(len(list_in) - 1, -1, -1):
         if list_in[i].isdigit() == True:
-            if list_in[i] == '0':  # если температура 0, то просто пропускаем ход
+            if list_in[i] == '0':  # если температура 0, то пропускаем ход
                 continue
             if len(list_in[i]) == 1:
                 list_in[i] = '0' + list_in[i]
-            list_in.insert(i + 1, '"')
-            list_in.insert(i, '"')
+            list_in[i + 1:i + 1] = '"'
+            list_in[i:i] = '"'
         elif list_in[i].isdigit() == False:
             for j in range(len(list_in[i])):
                 if (list_in[i][j].isdigit() == True) and (len(list_in[i]) == 2):
                     list_in[i] = list_in[i][0] + '0' + list_in[i][j]
-                    list_in.insert(i + 1, '"')
-                    list_in.insert(i, '"')
+                    list_in[i + 1:i + 1] = '"'
+                    list_in[i:i] = '"'
                 elif (list_in[i][j].isdigit() == True) and (len(list_in[i]) > 2):
                     list_in.insert(i + 1, '"')
                     list_in.insert(i, '"')
