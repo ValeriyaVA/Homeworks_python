@@ -1,30 +1,37 @@
-# решаю задачу, как если бы не знала положение значений времени и температуры со знаком +/- в строке или значения вводятся с клавиатуры и я их не знаю, иначе о чём задача?
-lst = ['в', '5', 'часов', '17', 'минут', 'температура', 'воздуха', 'была', '+5', 'градусов']
-for i in range(len(lst) - 1, -1,-1):
-    if lst[i].isdigit() == True:
-        if lst[i] == 0:  # если температура 0, то просто пропускаем ход
-            continue
-        if len(lst[i]) == 1:
-            lst[i] = '0' + lst[i]
-        lst.insert(i + 1, '"') # переделать через срезы!!!
-        lst.insert(i, '"')
-    elif lst[i].isdigit() == False:
-        for j in range(len(lst[i])):
-            if (lst[i][j].isdigit() == True) and (len(lst[i]) == 2):
-                lst[i] = lst[i][0] + '0' + lst[i][j]
-                lst.insert(i + 1, '"')
-                lst.insert(i, '"')
-            elif (lst[i][j].isdigit() == True) and (len(lst[i]) > 2):
-                lst.insert(i + 1, '"')
-                lst.insert(i, '"')
-                break
-print(lst)
+# решаю задачу, как если бы не знала положение значений времени и температуры со знаком +/- в строке
+my_list = ['в', '5', 'часов', '17', 'минут', 'температура', 'воздуха', 'была', '+5', 'градусов']
 
-i = 0
-while i != len(lst): #нужно забубенить строку!!!
-    if lst[i] != '"':
-        print(lst[i], end=' ')
-        i += 1
-    elif lst[i] == '"' and i + 3 <= len(lst):
-        print(lst[i] + lst[i + 1] + lst[i + 2], end=' ')
-        i += 3
+
+def convert_list_in_str(list_in: list) -> str:
+    for i in range(len(list_in) - 1, -1, -1):
+        if list_in[i].isdigit() == True:
+            if list_in[i] == 0:  # если температура 0, то просто пропускаем ход
+                continue
+            if len(list_in[i]) == 1:
+                list_in[i] = '0' + list_in[i]
+            list_in.insert(i + 1, '"')
+            list_in.insert(i, '"')
+        elif list_in[i].isdigit() == False:
+            for j in range(len(list_in[i])):
+                if (list_in[i][j].isdigit() == True) and (len(list_in[i]) == 2):
+                    list_in[i] = list_in[i][0] + '0' + list_in[i][j]
+                    list_in.insert(i + 1, '"')
+                    list_in.insert(i, '"')
+                elif (list_in[i][j].isdigit() == True) and (len(list_in[i]) > 2):
+                    list_in.insert(i + 1, '"')
+                    list_in.insert(i, '"')
+                    break
+    i = 0
+    str_out = ''
+    while i != len(list_in):
+        if list_in[i] != '"':
+            str_out += list_in[i] + ' '
+            i += 1
+        elif list_in[i] == '"' and i + 3 <= len(list_in):
+            str_out += list_in[i] + list_in[i + 1] + list_in[i + 2] + ' '
+            i += 3
+    return str_out
+
+
+result = convert_list_in_str(my_list)
+print(result)
