@@ -13,7 +13,7 @@ def transfer_list_in_str(list_in: list) -> str:
                 kop = '0' + kop
             str_out += ('%d руб %s коп, ' % (rub, kop))
         elif i == len(list_in) - 1:
-            rub = int(list_in[i] * 100 // 100)
+            rub = int(list_in[i])
             kop = list_in[i] * 100 % 100
             str_out += ('%s руб %d коп' % (rub, kop))
     return str_out
