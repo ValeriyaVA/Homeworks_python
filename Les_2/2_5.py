@@ -48,9 +48,9 @@ def check_five_max_elements(list_in: list) -> list:
     """Проверяет элементы входного списка вещественных чисел и возвращает
         список из ПЯТИ максимальных значений"""
     list_out = []
-    sort_price_adv(list_in)
+    sort_list = sort_price_adv(list_in)
     for i in range(5):
-        list_out.append(list_in[i])
+        list_out.append(sort_list[i])
     return list_out
 
 result_4 = check_five_max_elements(my_list)
