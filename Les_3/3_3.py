@@ -1,7 +1,6 @@
-def thesaurus(*args):
+def thesaurus(lst_in):
     names = {}
-    print(args, 'the', '\n')
-    for i in args:
+    for i in lst_in:
         if i[0] in names.keys():
             names[i[0]] += [i]
         else:
@@ -14,13 +13,13 @@ def thesaurus_adv(*args):
     for i in args:
         Name, Surname = (str(j) for j in i.split())
         if Surname[0] in surnames.keys():
-            surnames[Surname[0]] += {i}
+            surnames[Surname[0]] += [i]
         else:
             surnames[Surname[0]] = [i]
     for i in surnames.keys():
-        lst = thesaurus(surnames[i])
-        print(lst, 'adv')
+        lst_sur = surnames[i]
+        surnames[i] = thesaurus(lst_sur)
     return surnames
 
-result = thesaurus_adv("Иван Сергеев", "Инна Серова", "Петр Алексеев", "Илья Иванов", "Анна Савельева")
+result = thesaurus_adv("Иван Сергеев", "Инна Серова", "Петр Алексеев", "Илья Иванов", "Анна Савельева", "Елизавета Баранова", "Фёдор Бугаёв", "Андрей Иволгин", "Нина Петрова","Денис Ревин")
 print(result)
