@@ -12,5 +12,5 @@ def num_translate_adv(num):
     return None
 
 
-translate = num_translate_adv('Two')
-print(translate)
+print(num_translate_adv('Two'))
+
