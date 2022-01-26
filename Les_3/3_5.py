@@ -5,15 +5,25 @@ adverbs = ["сегодня", "вчера", "завтра", "позавчера",
 adjectives = ["веселый", "яркий", "зеленый", "утопичный", "мягкий"]
 
 
-def get_jokes(count: int) -> list:
-    """Возвращает список шуток в количестве count"""
+def get_jokes(count, repeat=True, **kwargs) -> list:
+    """
+    Возвращает список шуток в количестве count
+    параметр repeat определяет разрешение на повторы слов
+    количество шуток без повторов не превышает количество слов в самом коротком списке
+    """
     list_out = []
-    for l in range(count):
-        i = random.choice(nouns)
-        j = random.choice(adverbs)
-        k = random.choice(adjectives)
-        list_out.append(' '.join([i,j,k]))
+    if repeat == True:
+        for i in range(count):
+            list_out.append(' '.join(random.choice(kwargs[j]) for j in kwargs.keys()))
+    elif repeat == False:
+        for i in range(count):
+            noun, adverb, adjective = [random.choice(kwargs[j]) for j in kwargs.keys()]
+            list_out.append(' '.join([noun, adverb, adjective]))
+            kwargs['nouns'].remove(noun)
+            kwargs['adverbs'].remove(adverb)
+            kwargs['adjectives'].remove(adjective)
+
     return list_out
 
 
-print(get_jokes(3))
+print(get_jokes(4, False, nouns=nouns, adverbs=adverbs, adjectives=adjectives))

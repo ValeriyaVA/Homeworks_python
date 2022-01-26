@@ -13,11 +13,11 @@ def thesaurus(lst_in):
 def thesaurus_adv(*args):
     surnames = {}
     for i in args:
-        Name, Surname = (str(j) for j in i.split())
-        if Surname[0] in surnames.keys():
-            surnames[Surname[0]] += [i]
+        Surname = i[i.rfind(' '):]
+        if Surname[1] in surnames.keys():
+            surnames[Surname[1]] += [i]
         else:
-            surnames[Surname[0]] = [i]
+            surnames[Surname[1]] = [i]
     for i in surnames.keys():
         lst_sur = surnames[i]
         surnames[i] = thesaurus(lst_sur)
