@@ -1,0 +1,39 @@
+
+C:\Users\Лерчик>pip show pillow
+WARNING: Package(s) not found: pillow
+
+C:\Users\Лерчик>pip install pillow
+Collecting pillow
+  Using cached Pillow-9.0.0-cp39-cp39-win_amd64.whl (3.2 MB)
+Installing collected packages: pillow
+Successfully installed pillow-9.0.0
+
+C:\Users\Лерчик>python -m venv virt_home
+
+C:\Users\Лерчик>"virt_home/Scripts/activate.bat"
+
+(virt_home) C:\Users\Лерчик>pip show pillow
+WARNING: Package(s) not found: pillow
+
+(virt_home) C:\Users\Лерчик>pip install pillow==8.3.1
+Collecting pillow==8.3.1
+  Using cached Pillow-8.3.1-1-cp39-cp39-win_amd64.whl (3.2 MB)
+Installing collected packages: pillow
+Successfully installed pillow-8.3.1
+WARNING: You are using pip version 21.2.4; however, version 21.3.1 is available.
+You should consider upgrading via the 'C:\Users\Лерчик\virt_home\Scripts\python.exe -m pip install --upgrade pip' command.
+
+(virt_home) C:\Users\Лерчик>pip show pillow
+Name: Pillow
+Version: 8.3.1
+Summary: Python Imaging Library (Fork)
+Home-page: https://python-pillow.org
+Author: Alex Clark (PIL Fork Author)
+Author-email: aclark@python-pillow.org
+License: HPND
+Location: c:\users\лерчик\virt_home\lib\site-packages
+Requires:
+Required-by:
+
+(virt_home) C:\Users\Лерчик>deactivate
+C:\Users\Лерчик>
