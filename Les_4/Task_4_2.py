@@ -3,9 +3,7 @@ import requests
 
 def currency_rates(code: str) -> float:
     """возвращает курс валюты `code` по отношению к рублю"""
-    response = requests.get('http://www.cbr.ru/scripts/XML_daily.asp')
-    encodings = requests.utils.get_encoding_from_headers(response.headers)
-    content = response.content.decode(encoding=encodings)
+    content = requests.api.get('http://www.cbr.ru/scripts/XML_daily.asp').text
     if code.upper() not in content:
         result_value = None
     else:
