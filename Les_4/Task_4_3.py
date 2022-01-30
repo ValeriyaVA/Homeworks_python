@@ -17,7 +17,7 @@ def currency_rates_adv(code: str) -> float:
     return (result_value, result_date)
 
 
-kurs, date_value = currency_rates_adv("kzt")
+kurs, date_value = currency_rates_adv("EUR")
 
 empty = bool(not kurs and not date_value)
 if not empty and not isinstance(kurs, float):
