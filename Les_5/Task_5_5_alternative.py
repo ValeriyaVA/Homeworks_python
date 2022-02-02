@@ -1,13 +1,8 @@
-from random import randint
-
-
-# src = [randint(0, 50000) for i in range(100000)]  # генератор случайных целых чисел для проверки работы программы
-
 def get_uniq_numbers(src: list):
     dict_nums = {}
     for x in src:
-        dict_nums[x] = dict_nums.get(x, 0) + 1 # считаем в значениях количество повторов числа
-    new_list = [x for x in src if dict_nums[x] == 1]
+        dict_nums[x] = dict_nums.get(x, 0) + 1  # считаем в значениях количество повторов числа по по ключу числа
+    new_list = [x for x in src if dict_nums[x] == 1] # формируем список из ключей, в которых значение == 1
 
     return new_list
 
