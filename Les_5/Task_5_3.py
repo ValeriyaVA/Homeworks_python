@@ -6,7 +6,7 @@ def check_gen(tutors: list, klasses: list):
     for i in range(len(tutors)):
         if i < len(klasses):
             yield tutors[i], klasses[i]
-        if i >= len(klasses):
+        elif i >= len(klasses):
             yield tutors[i], None
 
 
