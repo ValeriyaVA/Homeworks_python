@@ -20,7 +20,7 @@ def prepare_dataset(path_users_file: str, path_hobby_file: str) -> dict:
             sys.exit([1])
         elif len(hobby_lines) <= len(user_lines):
             for i in range(len(hobby_lines)):
-                dict_user_hobby[user_lines[i]] = hobby_lines[i]
+                dict_user_hobby[user_lines[i]] = hobby_lines[i].split(',')
     return dict_user_hobby
 
 
