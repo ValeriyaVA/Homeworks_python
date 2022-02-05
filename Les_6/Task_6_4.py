@@ -1,17 +1,16 @@
 import sys
-import json
 
 
-def create_user_hobby(path_users_file: str, path_hobby_file: str):
+def create_user_hobby(path_users_file: str, path_hobby_file: str, result_file: str):
     """
     Считывает данные из файлов и сохраняет объединенные данные в новый файл users_hobby.txt
     :param path_users_file: путь до файла, содержащий ФИО пользователей, разделенных запятой по строке
     :param path_hobby_file: путь до файла, содержащий хобби, разделенные запятой по строке
-    :return: файл users_hobby.txt
+    :param result_file: название выходного файла txt со списком в формате: фИО: хобби
     """
     user_file = open(path_users_file, 'r', encoding='utf-8')
     hobby_file = open(path_hobby_file, 'r', encoding='utf-8')
-    users_hobby = open('users_hobby.txt', 'w', encoding='utf-8')
+    users_hobby = open(result_file, 'w', encoding='utf-8')
     if sum(1 for line_u in open('users.csv', 'r', encoding='utf-8')) < sum(
             1 for line_h in open('hobby.csv', 'r', encoding='utf-8')):
         sys.exit([1])
@@ -24,4 +23,4 @@ def create_user_hobby(path_users_file: str, path_hobby_file: str):
             print("{}: {}".format(line.rstrip(), None), file=users_hobby, end='\n')
 
 
-create_user_hobby('users.csv', 'hobby.csv')
+create_user_hobby('users.csv', 'hobby.csv', 'users_hobby.txt')
