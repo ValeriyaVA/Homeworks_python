@@ -36,7 +36,7 @@ def change_sale(number: int, new_sale: str):
     sales.seek(start)
     sales.write(replaced_content)
 
-# change_sale(8, '123456')
+change_sale(8, '123456')
 # вообще тут надо ловить ошибку ValueError: could not convert string to float или int, но этого не было в лекциях
-if int(sys.argv[1]) and (float(sys.argv[2].replace(',', '.')) or int(sys.argv[2])):
-    change_sale(int(sys.argv[1]), sys.argv[2])
+# if int(sys.argv[1]) and (float(sys.argv[2].replace(',', '.')) or int(sys.argv[2])):
+#     change_sale(int(sys.argv[1]), sys.argv[2])
