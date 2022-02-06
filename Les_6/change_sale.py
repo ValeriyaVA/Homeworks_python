@@ -12,7 +12,8 @@ def seek_move(seek: int):
     while i <= seek:
         sales.readline()
         i += 1
-    return sales.readline()
+    start_change = sales.tell() - 22
+    return sales.readline(), start_change
 
 
 def change_sale(number: int, new_sale: str):
@@ -23,17 +24,16 @@ def change_sale(number: int, new_sale: str):
     """
     if number > sum(1 for line in open('bakery.csv')):
         sys.exit(['Количество строк меньше заданного числа, изменение невозможно'])
-    old_sale = seek_move(number)
+    old_sale, start = seek_move(number)
     replaced_content = ""
-    start_change = sales.tell() - 22
-    sales.seek(start_change)
-    i = sales.tell() // 22
-    while i + 1 <= sum(1 for line in open('bakery.csv')):
+    sales.seek(start)
+    i = start // 22
+    while i + 1 <= sum(1 for line in open('bakery.csv')) and check == True:
         line = sales.readline()
         new_line = line.replace(old_sale, new_sale.ljust(20)+'\n')
         replaced_content = replaced_content + new_line
         i += 1
-    sales.seek(start_change)
+    sales.seek(start)
     sales.write(replaced_content)
 
 # change_sale(8, '123456')
