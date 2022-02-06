@@ -21,6 +21,9 @@ def create_user_hobby(path_users_file: str, path_hobby_file: str, result_file: s
         print(file=users_hobby)
         for line in user_file:
             print("{}: {}".format(line.rstrip(), None), file=users_hobby, end='\n')
+    user_file.close()
+    hobby_file.close()
+    users_hobby.close()
 
 
 create_user_hobby('users.csv', 'hobby.csv', 'users_hobby.txt')
