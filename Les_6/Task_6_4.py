@@ -11,11 +11,11 @@ def create_user_hobby(path_users_file: str, path_hobby_file: str, result_file: s
     user_file = open(path_users_file, 'r', encoding='utf-8')
     hobby_file = open(path_hobby_file, 'r', encoding='utf-8')
     users_hobby = open(result_file, 'w', encoding='utf-8')
-    if sum(1 for line_u in open('users.csv', 'r', encoding='utf-8')) < sum(
-            1 for line_h in open('hobby.csv', 'r', encoding='utf-8')):
+    if sum(1 for line_u in open(path_users_file, 'r', encoding='utf-8')) < sum(
+            1 for line_h in open(path_hobby_file, 'r', encoding='utf-8')):
         sys.exit([1])
-    elif sum(1 for line_u in open('users.csv', 'r', encoding='utf-8')) >= sum(
-            1 for line_h in open('hobby.csv', 'r', encoding='utf-8')):
+    elif sum(1 for line_u in open(path_users_file, 'r', encoding='utf-8')) >= sum(
+            1 for line_h in open(path_hobby_file, 'r', encoding='utf-8')):
         for line in hobby_file:
             print("{}: {}".format(user_file.readline().rstrip(), line), file=users_hobby, end='')
         print(file=users_hobby)

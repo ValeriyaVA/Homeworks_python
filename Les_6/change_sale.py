@@ -8,7 +8,8 @@ def seek_move(seek: int):
     Функция переводит курсор в файле на заданный с клавиатуры номер строки
     возвращает заменяемую строку и положение курсора
     :param seek: номер строки, на которую нужно перевести курсор
-    :return: заменяемая строка, положение курсора'''
+    :return: заменяемая строка, положение курсора
+    '''
     i = 2
     while i <= seek:
         sales.readline()
@@ -35,3 +36,4 @@ def change_sale(number: int, new_sale: str):
 
 if int(sys.argv[1]) and (float(sys.argv[2].replace(',', '.')) or int(sys.argv[2])):
     change_sale(int(sys.argv[1]), sys.argv[2])
+sales.close()

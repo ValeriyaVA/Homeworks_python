@@ -16,4 +16,5 @@ elif len(sys.argv) > 4:
 elif len(sys.argv) < 4:
     print('Нужно больше имён, попробуйте ещё раз')
     sys.exit()
+
 Task_6_4.create_user_hobby(sys.argv[1], sys.argv[2], sys.argv[3])

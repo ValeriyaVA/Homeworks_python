@@ -36,5 +36,4 @@ def print_sales(list_in):
 
 
 print_sales(sys.argv)
-
 sales.close()

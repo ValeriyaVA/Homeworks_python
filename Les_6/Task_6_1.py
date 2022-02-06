@@ -2,8 +2,12 @@ from pprint import pprint
 
 
 def get_parse_attrs(line: str) -> tuple:
-    """Парсит строку на атрибуты и возвращает кортеж атрибутов
-    (<remote_addr>, <request_type>, <requested_resource>)"""
+    """
+    Парсит строку на атрибуты и возвращает кортеж атрибутов
+    (<remote_addr>, <request_type>, <requested_resource>)
+    :param line: построчно принимает файл с логами
+    :return tuple(<remote_addr>, <request_type>, <requested_resource>)
+    """
     list_str = line.split(' ')
     return list_str[0], list_str[5][1:], list_str[6]
 
