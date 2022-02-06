@@ -25,7 +25,7 @@ def print_sales(list_in):
     elif len(list_in) == 3 and int(list_in[1]) and int(list_in[2]) <= sum(
             1 for line in open('bakery.csv', 'r', encoding='utf-8')):
         seek_move(int(list_in[1]))
-        j = (sales.tell() + 1) // 21
+        j = (sales.tell() + 1) // 22
         while j < int(list_in[2]):
             print(sales.readline(), end='')
             j += 1
