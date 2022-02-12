@@ -12,7 +12,7 @@ def email_parse(email: str) -> dict:
         состоит из трёх букв и более (по идее, ограничение сверху тоже возможно)
         может включать буквы любого регистра и цифры
         может включать нижнее подчеркивание, тире, точку, но не в начале и в конце
-        нельзя использовать подряд два спецсимвола
+        нельзя использовать подряд два и более точки или тире или нижних подчёркивания
     Что касательно доменов:
         домен и субдомены состоят из двух и более букв
 
@@ -21,7 +21,8 @@ def email_parse(email: str) -> dict:
     """
     dict_adress = {'username': None, 'domain': None}
     # RE_MAIL = re.compile(r'^[a-zA-Z0-9_.-]{3,}@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]{2,})+$')
-    RE_MAIL = re.compile(r'^[^_.-][a-zA-Z0-9_.-]{3,}[^_.-]@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]{2,})+$')
+    # RE_MAIL = re.compile(r'^[^_.-][a-zA-Z0-9_.-]{3,}[^_.-]@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]{2,})+$')
+    RE_MAIL = re.compile(r'(?!.*([-._])\1)^[^_.-][a-zA-Z0-9_.-]{3,}[^_.-]@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]{2,})+$')
     # RE_MAIL = re.compile(r'^[a-zA-Z0-9_.-]{3,}@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]{2,})+$')
     if not RE_MAIL.match(email):
         raise ValueError(f'wrong email: {email}')
@@ -34,5 +35,4 @@ def email_parse(email: str) -> dict:
 
 if __name__ == '__main__':
     email_parse('someone@geekbrains.ru')
-    # email_parse('valeriia.vorobkalo@chemistry.msu.ru')
     # email_parse('someone@geekbrainsru')
